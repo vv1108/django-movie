@@ -25,7 +25,7 @@ SECRET_KEY = get_secret("SECRET_KEY")
 
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # 장고 기본 앱들
@@ -40,25 +40,33 @@ DJANGO_APPS = [
 
 # 따로 설치하는 (pip 를 통해) 라이브러리들
 THIRD_PARTY_APPS = [
+    'rest_framework',
+    'corsheaders',
 ]
 
 # python manage.py startapp 명령어로 생성한 앱들
 PROJECT_APPS = [
     'accounts.apps.AccountsConfig',
+    'movies.apps.MoviesConfig',
 ]
 
 INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + PROJECT_APPS
 
 
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
-    'django.middleware.csrf.CsrfViewMiddleware',
+    # 'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
+
+CORS_ORIGIN_WHITELIST = ('http://127.0.0.1:3000', 'http://localhost:3000')
+CORS_ALLOW_CREDENTIALS = True
+CSRF_TRUSTED_ORIGINS = ['http://127.0.0.1:3000', 'http://localhost:3000']
 
 ROOT_URLCONF = 'config.urls'
 
