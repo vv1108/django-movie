@@ -73,7 +73,7 @@ ROOT_URLCONF = 'config.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, 'templates')],
+        'DIRS': [os.path.join(BASE_DIR, 'templates', 'react-movies', 'public')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -126,6 +126,10 @@ USE_TZ = False
 
 # Static files (CSS, JavaScript, Images)
 STATIC_URL = 'static/'
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR,'static'),
+    os.path.join(BASE_DIR,'react-movies','public'),
+    ]
 
 
 # Default primary key field type
