@@ -1,0 +1,23 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        {% include "fragments/head.html" %}
+        {% block head %}
+            <base href="/"><!-- 해당 문서의 모든 상대 주소(relative URL)에 대한 기본 URL 정의 -->
+        {% endblock head %}
+    </head>
+    <body>
+        <div class="wrap">
+            {% include "fragments/header.html" %}
+
+            {% block content %}
+            {% endblock content %}  
+
+            {% include "fragments/footer.html" %}
+        </div>
+        {% block script %}
+        {% endblock script %}
+    </body>
+</html>
